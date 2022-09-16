@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int mostFrequentEven(vector<int>& nums) {
+        map<int,int>mp;
+        for(int i=0;i<nums.size();i++){
+            if(nums[i]%2==0){
+                mp[nums[i]]++;
+            }
+        }
+        if(mp.size()==0) return -1;
+        int mx=-1;
+        int val=-1;
+        for(auto x:mp){
+            cout<<x.first<<" "<<x.second<<endl;
+            if(x.second>mx){
+                mx=x.second;
+                val=x.first;
+            }
+        }
+        return val;
+    }
+};
