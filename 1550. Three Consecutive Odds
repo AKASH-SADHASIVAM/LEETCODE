@@ -1,0 +1,28 @@
+class Solution {
+public:
+    bool threeConsecutiveOdds(vector<int>& arr) {
+        int coun=0;
+        vector<int>res;
+        for(int i=0;i<arr.size();i++){
+            if(arr[i]%2!=0 && i==arr.size()-1){
+                coun++;
+                res.push_back(coun);
+                
+            }
+            else if(arr[i]%2!=0){
+                coun++;
+            }
+            else{
+                res.push_back(coun);
+                coun=0;
+            }
+        }
+        for(int i=0;i<res.size();i++){
+            cout<<res[i]<<" ";
+        }
+        int c=*max_element(res.begin(),res.end());
+        if(c>=3) return true;
+        return false;
+        
+    }
+};
