@@ -1,0 +1,40 @@
+class Solution {
+public:
+    vector<int> spiralOrder(vector<vector<int>>& m) {
+        vector<int>ans;
+        int mov=0;
+        int top=0;
+        int bot=m.size()-1;
+        int left=0;
+        int right=m[0].size()-1;
+        while(left<=right && top<=bot){
+            if(mov==0){
+                for(int i=left;i<=right;i++){
+                    ans.push_back(m[top][i]);
+                }
+                top++;
+            }
+            else if(mov==1){
+                for(int i=top;i<=bot;i++){
+                    ans.push_back(m[i][right]);
+                    
+                }
+                right--;
+            }
+            else if(mov==2){
+                for(int i=right;i>=left;i--){
+                    ans.push_back(m[bot][i]);
+                }
+                bot--;
+            }
+            else if(mov==3){
+                for(int i=bot;i>=top;i--){
+                    ans.push_back(m[i][left]);
+                }
+                left++;
+            }
+            mov=(mov+1)%4;
+        }
+        return ans;
+    }
+};
