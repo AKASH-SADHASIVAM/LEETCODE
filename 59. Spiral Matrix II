@@ -1,0 +1,49 @@
+class Solution {
+public:
+    vector<vector<int>> generateMatrix(int n) {
+        vector<vector<int>>a(n,vector<int>(n,0));
+        int mov=0;
+        int coun=0;
+        int top=0;
+        int bot=a.size()-1;
+        int left=0;
+        int right=a[0].size()-1;
+        while(left<=right && top<=bot){
+            if(mov==0){
+                for(int i=left;i<=right;i++){
+                    coun++;
+                    a[top][i]=coun;
+                }
+                top++;
+                
+            }
+            if(mov==1){
+                for(int i=top;i<=bot;i++){
+                    coun++;
+                    a[i][right]=coun;
+                }
+                right--;
+            }
+            if(mov==2){
+                for(int i=right;i>=left;i--){
+                    coun++;
+                    a[bot][i]=coun;
+                }
+                bot--;
+            }
+            if(mov==3){
+                for(int i=bot;i>=top;i--){
+                    coun++;
+                    a[i][left]=coun;
+                }
+                left++;
+            }
+            mov=(mov+1)%4;
+        }
+        
+//         for(int i=0;i<a.size();i++){
+            
+//         }
+        return a;
+    }
+};
