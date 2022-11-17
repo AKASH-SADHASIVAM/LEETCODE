@@ -1,0 +1,25 @@
+class Solution {
+public:
+    bool isHappy(int n) {
+        set<int>s;
+        int tar,idx;
+        while(1){
+            tar=0;
+            while(n){
+               idx=n%10;
+               tar+=idx*idx;
+               n=n/10;
+               
+            }
+            if(tar==1) return true;
+            else if(s.find(tar)!=s.end()){
+                return false;
+            }
+            s.insert(tar);
+            n=tar;
+            
+
+        }
+        return false;
+    }
+};
