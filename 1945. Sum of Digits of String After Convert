@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int getLucky(string s, int k) {
+        
+        string al="";
+        for(int i=0;i<s.size();i++){
+            al=al+to_string(s[i]-96);
+        }
+        int sum;
+        while(k){
+            sum=0;
+            for(int i=0;i<al.size();i++){
+                sum=sum+int(al[i])-48;
+            }
+            al=to_string(sum);
+            
+            --k;
+        }
+        return sum;
+    }
+};
