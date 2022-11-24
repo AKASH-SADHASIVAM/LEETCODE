@@ -1,0 +1,17 @@
+class Solution {
+public:
+    string convertToTitle(int c) {
+        string a="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        string s="";
+        
+        while(c>0){
+           c--;
+            int m=c%26;
+            s.push_back(a[m]);
+            c=c/26;
+           
+        }
+        reverse(s.begin(),s.end());
+        return  s;
+    }
+};
