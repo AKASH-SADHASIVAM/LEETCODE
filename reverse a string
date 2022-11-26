@@ -1,0 +1,6 @@
+class solution{
+public:
+   string rev(string s){
+   reverse(s.begin(),s.end());
+   }
+};
