@@ -1,0 +1,14 @@
+class Solution {
+public:
+  int depth(TreeNode*root,int dth){
+      if(root==nullptr) return 0;
+      int l=depth(root->left,dth+1);
+      int r=depth(root->right,dth+1);
+      return 1+max(l,r);
+
+  }
+    int maxDepth(TreeNode* root) {
+        int dth=0;
+        return  depth(root,dth);
+    }
+};
