@@ -1,0 +1,13 @@
+class Solution {
+public:
+    string frequencySort(string s) {
+       vector<pair<int,char>>v('z'+1,{0,0});
+       for(char c:s) v[c]={v[c].first+1,c};
+       string ss="";
+       sort(v.rbegin(),v.rend());
+       for(auto x:v){
+           ss=ss+string(x.first,x.second);
+       }
+       return ss;
+    }
+};
