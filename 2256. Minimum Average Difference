@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int minimumAverageDifference(vector<int>& nums) {
+        vector<int>ans;
+        vector<long>dum1(nums.size(),0);
+        dum1[0]=nums[0];
+        for(int i=1;i<nums.size();i++) dum1[i]=nums[i]+dum1[i-1];
+        
+        for(int i=0;i<nums.size();i++){
+            int v1=dum1[i]/(i+1);
+            int v2=nums.size()-1-i?(dum1[nums.size()-1]-dum1[i])/(nums.size()-1-i):0;
+            int a=abs(v1-v2);
+            ans.push_back(a);
+        }
+        int mini=min_element(ans.begin(),ans.end())-ans.begin();
+        return mini;
+
+    }
+};
