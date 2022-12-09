@@ -1,0 +1,45 @@
+class Solution {
+public:
+    int romanToInt(string s) {
+        
+        unordered_set<string>su={"IV","IX","XL","XC","CD","CM"};
+        vector<string>v;
+        string s1=s;
+        for(int i=1;i<s.size();i++){
+            string ss="";
+            ss=ss+s[i-1]+s[i];
+            if(su.find(ss)!=su.end()){
+                v.push_back(ss);
+                std::size_t ind = s1.find(ss);
+                s1.erase(ind,ss.length());
+                i=i+1;
+                
+            }
+            
+        }
+        int sum=0;
+        for(int i=0;i<v.size();i++){
+            if(v[i]=="IV") sum=sum+4;
+            if(v[i]=="IX") sum=sum+9;
+            if(v[i]=="XL") sum=sum+40;
+            if(v[i]=="XC") sum=sum+90;
+            if(v[i]=="CD") sum=sum+400;
+            if(v[i]=="CM") sum=sum+900;
+
+        }
+        for(int i=0;i<s1.size();i++){
+            if(s1[i]=='M') sum=sum+1000;
+            if(s1[i]=='D') sum=sum+500;
+            if(s1[i]=='C') sum=sum+100;
+            if(s1[i]=='L') sum=sum+50;
+            if(s1[i]=='X') sum=sum+10;
+            if(s1[i]=='V') sum=sum+5;
+            if(s1[i]=='I') sum=sum+1;
+
+        }
+        
+        return sum;
+        
+        
+    }
+};
