@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int climbStairs(int n) {
+        int fst=0;
+        int snd=1;
+        int trd=0;
+        for(int i=1;i<=n;i++){
+            trd=fst+snd;
+            fst=snd;
+            snd=trd;
+            
+        }
+        return trd;
+    }
+};
