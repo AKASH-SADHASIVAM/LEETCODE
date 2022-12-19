@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int tribonacci(int n) {
+        if(n==0) return 0;
+        if(n==1) return 1;
+        if(n==2) return 1;
+        int fs=0;
+        int snd=1;
+        int trd=1;
+        int frt=0;
+        for(int i=3;i<=n;i++){
+            int frt=fs+snd+trd;
+           fs=snd;
+           snd=trd;
+           trd=frt;
+        }
+        return trd;
+    }
+};
