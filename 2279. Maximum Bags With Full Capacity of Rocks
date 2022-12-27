@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int maximumBags(vector<int>& c, vector<int>& r, int as) {
+        vector<int>v;
+        for(int i=0;i<c.size();i++){
+            v.push_back(c[i]-r[i]);
+        }
+        sort(v.begin(),v.end());
+        int coun=0;
+        vector<int>res;
+        for(auto x:v){
+            if(x==0) coun++;
+            else if(as>=x){
+                coun++;
+                as=as-x;
+            }
+        }
+        return coun;
+    }
+};
