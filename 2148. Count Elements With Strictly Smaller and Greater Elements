@@ -1,0 +1,12 @@
+class Solution {
+public:
+    int countElements(vector<int>& nums) {
+        int coun=0;
+        for(int i=0;i<nums.size();i++){
+            int s=count_if(nums.begin(),nums.end(),[=](auto x){return x<nums[i];});
+            int g=count_if(nums.begin(),nums.end(),[=](auto x){return x>nums[i];});
+            if(s&&g) coun++;
+        }
+        return coun;
+    }
+};
