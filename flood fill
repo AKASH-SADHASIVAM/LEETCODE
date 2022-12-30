@@ -1,0 +1,22 @@
+class Solution {
+public:
+    void img(vector<vector<int>>&v,int x,int y,int color,int val){
+        int m=v.size();
+        int n=v[0].size();
+        if(x<0 || y<0 || x>=m || y>=n || v[x][y]!=val ) return;
+       v[x][y]=color;
+      img(v,x,y+1,color,val);
+       img(v,x+1,y,color,val);
+       img(v,x-1,y,color,val);
+      img(v,x,y-1,color,val);
+
+
+    }
+    vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int color) {
+        if(color==image[sr][sc]) return image;
+        int val=image[sr][sc];
+        img(image,sr,sc,color,val);
+        return image;
+        
+    }
+};
