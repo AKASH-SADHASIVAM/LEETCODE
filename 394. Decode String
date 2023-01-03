@@ -1,0 +1,53 @@
+class Solution {
+public:
+    string decodeString(string s) {
+        stack<int>st1;
+        stack<char>st2;
+        string res="";
+        int k=0;
+        for(int i=0;i<s.size();i++){
+            if(st1.size()==0 && s[i]>='a' && s[i]<='z') res=res+s[i];
+            else if(s[i]>=48 && s[i]<=57){
+                 k=k*10+s[i]-48;
+                if(s[i+1]>=48 && s[i+1]<=57){
+                    
+                    continue;
+                }
+                else{
+                    st1.push(k);
+                    k=0;
+                }
+            }
+            else if(s[i]==']'){
+                string t="";
+                while(st2.top()!='['){
+                    t=t+st2.top();
+                    st2.pop();
+                    
+                }
+                st2.pop();
+                cout<<t<<endl;
+                std::ostringstream os;
+                std::fill_n(std::ostream_iterator<std::string>(os), st1.top(), t);
+                st1.pop();
+               
+                string temp=os.str();
+                reverse(temp.begin(),temp.end());
+                cout<<temp<<endl;
+                if(st2.size()!=0){
+                    for(int j=0;j<temp.size();j++){
+                        st2.push(temp[j]);
+                    }
+                }
+                else{
+                    res=res+temp;
+                }
+
+            }
+            else if(st1.size()!=0){
+                st2.push(s[i]);
+            }
+        }
+        return res;
+    }
+};
