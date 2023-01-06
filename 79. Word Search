@@ -1,0 +1,34 @@
+class Solution {
+public:
+bool srh(vector<vector<char>>&board,int x,int y,int s,int k,string word){
+    if(s==k) return true;
+    int m1=board.size();
+    int n1=board[0].size();
+    if(x<0 || y<0 || x>=m1 || y>=n1) return false;
+    if(board[x][y]!=word[k]) return false;
+    char c=board[x][y];
+    board[x][y]='*';
+    bool s1=srh(board,x,y+1,s,k+1,word);
+    bool s2=srh(board,x,y-1,s,k+1,word);
+    bool s3=srh(board,x-1,y,s,k+1,word);
+    bool s4=srh(board,x+1,y,s,k+1,word);
+    board[x][y]=c;
+    return s1 ||s2 || s3|| s4;
+
+}
+    bool exist(vector<vector<char>>& board, string word) {
+        int s=word.size();
+        int m=board.size();
+        int n=board[0].size();
+        int k=0;
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+                if(board[i][j]==word[0]){
+                    if(srh(board,i,j,s,k,word)) return true;
+                   
+                }
+            }
+        }
+        return false;
+    }
+};
