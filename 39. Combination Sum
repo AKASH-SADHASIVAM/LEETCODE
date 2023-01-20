@@ -1,0 +1,28 @@
+class Solution {
+public:
+    void comb(int ind, int target,vector<int>&ds,vector<vector<int>>&v,int n,vector<int>&candidates){
+        if(ind==n){
+            if(target==0){
+                v.push_back(ds);
+            }
+            return;
+        }
+        if(candidates[ind]<=target){
+            ds.push_back(candidates[ind]);
+            comb(ind,target-candidates[ind],ds,v,n,candidates);
+            ds.pop_back();
+
+
+        }
+         comb(ind+1,target,ds,v,n,candidates);
+
+    }
+ 
+    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+        vector<vector<int>>v;
+        int n=candidates.size();
+        vector<int>ds;
+        comb(0,target,ds,v,n,candidates);
+        return v;
+    }
+};
