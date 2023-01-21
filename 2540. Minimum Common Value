@@ -1,0 +1,25 @@
+class Solution {
+public:
+    bool search(vector<int>&nums2,int tar){
+        int l=0;
+        int r=nums2.size()-1;
+        int mid=0;
+        while(l<=r){
+            int mid=(r+l)/2;
+            if(nums2[mid]==tar) return true;
+            else if(nums2[mid]>tar){
+                r=mid-1;
+            }
+            else{
+                l=mid+1;
+            }
+        }
+        return false;
+    }
+    int getCommon(vector<int>& nums1, vector<int>& nums2) {
+        for(int i=0;i<nums1.size();i++){
+            if(search(nums2,nums1[i]))return nums1[i];
+        }
+        return -1;
+    }
+};
